@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Telur segar dan berkualitas dari peternakan ayam petelur Arapi Farm.">
+    <title>Arapi Farm — Telur Segar Setiap Hari</title>
+    <style>
+        :root {
+            --green: #214b35;
+            --green-dark: #173a28;
+            --green-light: #eaf0e5;
+            --cream: #f8f6ee;
+            --yellow: #e8b94f;
+            --ink: #203328;
+            --muted: #6b796e;
+            --white: #fffefa;
+            --serif: Georgia, "Times New Roman", serif;
+            --sans: "Segoe UI", Arial, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            color: var(--ink);
+            background: var(--white);
+            font-family: var(--sans);
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button {
+            font: inherit;
+        }
+
+        .container {
+            width: min(1120px, calc(100% - 48px));
+            margin: 0 auto;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            color: var(--green);
+            font-size: .75rem;
+            font-weight: 800;
+            letter-spacing: .16em;
+            text-transform: uppercase;
+        }
+
+        .eyebrow::before {
+            width: 24px;
+            height: 2px;
+            content: "";
+            background: var(--yellow);
+        }
+
+        h1,
+        h2,
+        h3,
+        p {
+            margin-top: 0;
+        }
+
+        h1,
+        h2 {
+            font-family: var(--serif);
+            font-weight: 500;
+            letter-spacing: -.035em;
+        }
+
+        h2 {
+            margin-bottom: 16px;
+            font-size: clamp(2.2rem, 4vw, 3.5rem);
+            line-height: 1.12;
+        }
+
+        .section-copy {
+            max-width: 550px;
+            color: var(--muted);
+        }
+
+        .button {
+            display: inline-flex;
+            min-height: 50px;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 0 23px;
+            border: 1px solid transparent;
+            border-radius: 4px;
+            background: var(--green);
+            color: white;
+            font-weight: 700;
+            transition: background .2s, transform .2s;
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+            background: var(--green-dark);
+        }
+
+        .button-light {
+            border-color: rgba(255, 255, 255, .55);
+            background: transparent;
+        }
+
+        .button-light:hover {
+            background: rgba(255, 255, 255, .12);
+        }
+
+        .arrow {
+            font-size: 1.15rem;
+        }
+
+        header {
+            position: absolute;
+            z-index: 5;
+            top: 0;
+            right: 0;
+            left: 0;
+            color: white;
+        }
+
+        .nav-wrap {
+            display: flex;
+            height: 88px;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(255, 255, 255, .22);
+        }
+
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 11px;
+            font-family: var(--serif);
+            font-size: 1.45rem;
+            font-weight: 700;
+        }
+
+        .brand-mark {
+            display: grid;
+            width: 38px;
+            height: 38px;
+            place-items: center;
+            border: 1px solid rgba(255, 255, 255, .7);
+            border-radius: 50%;
+            color: var(--yellow);
+            font-size: 1.12rem;
+        }
+
+        .brand small {
+            display: block;
+            margin-top: -5px;
+            font-family: var(--sans);
+            font-size: .57rem;
+            font-weight: 600;
+            letter-spacing: .17em;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 34px;
+            font-size: .87rem;
+            font-weight: 600;
+        }
+
+        .nav-links a:not(.button) {
+            opacity: .9;
+            transition: opacity .2s;
+        }
+
+        .nav-links a:not(.button):hover {
+            opacity: .65;
+        }
+
+        .nav-links .button {
+            min-height: 42px;
+            padding: 0 17px;
+            border-color: rgba(255, 255, 255, .55);
+            background: transparent;
+            font-size: .82rem;
+        }
+
+        .menu-toggle {
+            display: none;
+            border: 0;
+            background: none;
+            color: white;
+            font-size: 1.7rem;
+            cursor: pointer;
+        }
+
+        .hero {
+            position: relative;
+            display: flex;
+            min-height: 700px;
+            align-items: center;
+            overflow: hidden;
+            background: #35523a url("https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?auto=format&fit=crop&w=2000&q=85") center 48% / cover no-repeat;
+            color: white;
+            padding-bottom: 100px;
+            /* <-- PERBAIKAN: Ditambahkan jarak bawah agar teks aman */
+        }
+
+        .hero::before {
+            position: absolute;
+            inset: 0;
+            content: "";
+            background: linear-gradient(90deg, rgba(17, 42, 27, .88) 0%, rgba(17, 42, 27, .68) 44%, rgba(17, 42, 27, .12) 100%);
+        }
+
+        .hero::after {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            height: 120px;
+            content: "";
+            background: linear-gradient(transparent, rgba(19, 43, 29, .28));
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 690px;
+            padding-top: 86px;
+        }
+
+        .hero .eyebrow {
+            color: #f4d276;
+        }
+
+        .hero h1 {
+            max-width: 680px;
+            margin: 20px 0 20px;
+            font-size: clamp(3rem, 7vw, 5.65rem);
+            line-height: .99;
+        }
+
+        .hero h1 span {
+            color: #f1ca68;
+            font-style: italic;
+        }
+
+        .hero-copy {
+            max-width: 510px;
+            margin-bottom: 31px;
+            color: rgba(255, 255, 255, .83);
+            font-size: 1.05rem;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .hero-note {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 40px;
+            color: rgba(255, 255, 255, .82);
+            font-size: .83rem;
+        }
+
+        .note-dot {
+            display: grid;
+            width: 25px;
+            height: 25px;
+            place-items: center;
+            border: 1px solid rgba(255, 255, 255, .5);
+            border-radius: 50%;
+            color: #f1ca68;
+        }
+
+        .numbers {
+            position: relative;
+            z-index: 2;
+            margin-top: -48px;
+        }
+
+        .numbers-card {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            padding: 28px 20px;
+            border-radius: 6px;
+            background: var(--white);
+            box-shadow: 0 15px 50px rgba(27, 52, 36, .12);
+        }
+
+        .number {
+            padding: 5px 20px;
+            text-align: center;
+        }
+
+        .number+.number {
+            border-left: 1px solid #e8e9df;
+        }
+
+        .number strong {
+            display: block;
+            color: var(--green);
+            font-family: var(--serif);
+            font-size: 2rem;
+            font-weight: 500;
+            line-height: 1.2;
+        }
+
+        .number span {
+            color: var(--muted);
+            font-size: .83rem;
+        }
+
+        .about {
+            padding: 115px 0 105px;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 85px;
+        }
+
+        .about-visual {
+            position: relative;
+            min-height: 470px;
+        }
+
+        .about-photo {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 83%;
+            height: 420px;
+            border-radius: 5px;
+            background: #d9e1d0 url("https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1100&q=85") center / cover no-repeat;
+        }
+
+        .about-photo::after {
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            content: "";
+            background: linear-gradient(0deg, rgba(22, 52, 32, .16), transparent 60%);
+        }
+
+        .quality-card {
+            position: absolute;
+            right: 0;
+            bottom: 4px;
+            display: flex;
+            width: 210px;
+            min-height: 145px;
+            flex-direction: column;
+            justify-content: center;
+            padding: 22px;
+            border-radius: 4px;
+            background: var(--green);
+            color: white;
+        }
+
+        .quality-card strong {
+            color: #f1ca68;
+            font-family: var(--serif);
+            font-size: 2.5rem;
+            font-weight: 500;
+            line-height: 1;
+        }
+
+        .quality-card span {
+            margin-top: 9px;
+            font-size: .83rem;
+        }
+
+        .about-text .eyebrow {
+            margin-bottom: 17px;
+        }
+
+        .about-text p {
+            color: var(--muted);
+        }
+
+        .check-list {
+            display: grid;
+            gap: 13px;
+            margin: 24px 0 30px;
+            padding: 0;
+            list-style: none;
+        }
+
+        .check-list li {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            font-weight: 650;
+        }
+
+        .check {
+            display: grid;
+            width: 23px;
+            height: 23px;
+            flex: 0 0 23px;
+            place-items: center;
+            border-radius: 50%;
+            background: var(--green-light);
+            color: var(--green);
+            font-size: .76rem;
+        }
+
+        .values {
+            padding: 92px 0 100px;
+            background: var(--cream);
+        }
+
+        .section-heading {
+            max-width: 620px;
+            margin: 0 auto 48px;
+            text-align: center;
+        }
+
+        .section-heading .eyebrow {
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+
+        .section-heading p {
+            margin-bottom: 0;
+            color: var(--muted);
+        }
+
+        .value-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .value-card {
+            min-height: 235px;
+            padding: 30px 28px;
+            border: 1px solid #e7e8dd;
+            border-radius: 5px;
+            background: var(--white);
+        }
+
+        .value-icon {
+            display: grid;
+            width: 48px;
+            height: 48px;
+            margin-bottom: 21px;
+            place-items: center;
+            border-radius: 50%;
+            background: var(--green-light);
+            color: var(--green);
+            font-size: 1.35rem;
+        }
+
+        .value-card h3 {
+            margin-bottom: 9px;
+            font-family: var(--serif);
+            font-size: 1.35rem;
+            font-weight: 600;
+        }
+
+        .value-card p {
+            margin-bottom: 0;
+            color: var(--muted);
+            font-size: .92rem;
+        }
+
+        .products {
+            padding: 105px 0;
+        }
+
+        .products-head {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 30px;
+            margin-bottom: 39px;
+        }
+
+        .products-head h2 {
+            max-width: 500px;
+            margin-bottom: 0;
+        }
+
+        .products-head p {
+            max-width: 360px;
+            margin-bottom: 4px;
+            color: var(--muted);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .product-card {
+            overflow: hidden;
+            border: 1px solid #e9e9e1;
+            border-radius: 5px;
+            background: var(--white);
+        }
+
+        .product-image {
+            position: relative;
+            height: 235px;
+            background-position: center;
+            background-size: cover;
+        }
+
+        .product-image.one {
+            background-image: url("https://images.unsplash.com/photo-1518569656558-1f25e69d93d7?auto=format&fit=crop&w=900&q=85");
+        }
+
+        .product-image.two {
+            background-image: url("https://images.unsplash.com/photo-1582722872445-44dc5f7e3c8f?auto=format&fit=crop&w=900&q=85");
+        }
+
+        .product-image.three {
+            background-image: url("https://images.unsplash.com/photo-1498654077810-12c21d4d6dc3?auto=format&fit=crop&w=900&q=85");
+        }
+
+        .product-tag {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            padding: 6px 11px;
+            border-radius: 3px;
+            background: var(--white);
+            color: var(--green);
+            font-size: .72rem;
+            font-weight: 800;
+            letter-spacing: .06em;
+            text-transform: uppercase;
+        }
+
+        .product-info {
+            padding: 23px 23px 25px;
+        }
+
+        .product-info h3 {
+            margin-bottom: 8px;
+            font-family: var(--serif);
+            font-size: 1.4rem;
+        }
+
+        .product-info p {
+            min-height: 48px;
+            margin-bottom: 18px;
+            color: var(--muted);
+            font-size: .88rem;
+        }
+
+        .product-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--green);
+            font-size: .88rem;
+            font-weight: 800;
+        }
+
+        .product-link:hover {
+            gap: 13px;
+        }
+
+        .cta {
+            padding: 78px 0;
+            background: var(--green);
+            color: white;
+        }
+
+        .cta-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 35px;
+        }
+
+        .cta h2 {
+            max-width: 590px;
+            margin: 12px 0 0;
+            font-size: clamp(2rem, 4vw, 3.3rem);
+        }
+
+        .cta .eyebrow {
+            color: #f1ca68;
+        }
+
+        .cta .button {
+            flex: 0 0 auto;
+            background: var(--yellow);
+            color: var(--green-dark);
+        }
+
+        .cta .button:hover {
+            background: #f3cb68;
+        }
+
+        footer {
+            padding: 55px 0 24px;
+            background: #173a28;
+            color: white;
+        }
+
+        .footer-main {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 65px;
+            padding-bottom: 43px;
+        }
+
+        .footer-brand p {
+            max-width: 330px;
+            margin: 18px 0 0;
+            color: rgba(255, 255, 255, .7);
+            font-size: .89rem;
+        }
+
+        footer h3 {
+            margin: 5px 0 18px;
+            font-size: .88rem;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+        }
+
+        .footer-links {
+            display: grid;
+            gap: 9px;
+            color: rgba(255, 255, 255, .72);
+            font-size: .88rem;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, .16);
+            color: rgba(255, 255, 255, .6);
+            font-size: .78rem;
+        }
+
+        @media (max-width: 800px) {
+            .container {
+                width: min(100% - 36px, 620px);
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 76px;
+                right: 18px;
+                left: 18px;
+                display: none;
+                align-items: stretch;
+                gap: 0;
+                padding: 12px;
+                border-radius: 5px;
+                background: var(--green-dark);
+                box-shadow: 0 15px 30px #10291b55;
+            }
+
+            .nav-links.open {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .nav-links a:not(.button) {
+                padding: 11px 12px;
+            }
+
+            .nav-links .button {
+                margin-top: 8px;
+            }
+
+            .hero {
+                min-height: 650px;
+                background-position: 58% center;
+            }
+
+            .hero::before {
+                background: linear-gradient(90deg, rgba(17, 42, 27, .9), rgba(17, 42, 27, .53));
+            }
+
+            .hero-content {
+                padding-top: 68px;
+            }
+
+            .numbers-card {
+                grid-template-columns: repeat(2, 1fr);
+                row-gap: 22px;
+            }
+
+            .number:nth-child(3) {
+                border-left: 0;
+            }
+
+            .about {
+                padding: 85px 0;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 38px;
+            }
+
+            .about-visual {
+                min-height: 400px;
+            }
+
+            .about-photo {
+                height: 360px;
+            }
+
+            .value-grid,
+            .product-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .value-card:last-child,
+            .product-card:last-child {
+                grid-column: 1 / -1;
+            }
+
+            .products-head {
+                align-items: start;
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .cta-inner {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .footer-main {
+                grid-template-columns: 1fr 1fr;
+                gap: 35px;
+            }
+
+            .footer-brand {
+                grid-column: 1 / -1;
+            }
+        }
+
+        @media (max-width: 520px) {
+            .container {
+                width: calc(100% - 32px);
+            }
+
+            .nav-wrap {
+                height: 76px;
+            }
+
+            .hero {
+                min-height: 650px;
+            }
+
+            .hero h1 {
+                font-size: 3.35rem;
+            }
+
+            .hero-copy {
+                font-size: .95rem;
+            }
+
+            .hero-actions {
+                align-items: stretch;
+                flex-direction: column;
+                max-width: 280px;
+            }
+
+            .hero-note {
+                margin-top: 28px;
+            }
+
+            .numbers {
+                margin-top: -35px;
+            }
+
+            .numbers-card {
+                padding: 20px 10px;
+            }
+
+            .number {
+                padding: 4px 8px;
+            }
+
+            .number strong {
+                font-size: 1.65rem;
+            }
+
+            .number span {
+                font-size: .74rem;
+            }
+
+            .about-visual {
+                min-height: 330px;
+            }
+
+            .about-photo {
+                width: 88%;
+                height: 300px;
+            }
+
+            .quality-card {
+                width: 160px;
+                min-height: 110px;
+                padding: 15px;
+            }
+
+            .quality-card strong {
+                font-size: 2rem;
+            }
+
+            .quality-card span {
+                font-size: .74rem;
+            }
+
+            .values,
+            .products {
+                padding: 78px 0;
+            }
+
+            .value-grid,
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .value-card:last-child,
+            .product-card:last-child {
+                grid-column: auto;
+            }
+
+            .product-image {
+                height: 220px;
+            }
+
+            .cta {
+                padding: 63px 0;
+            }
+
+            .footer-main {
+                grid-template-columns: 1fr 1fr;
+                gap: 30px 18px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 6px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container nav-wrap">
+            <a class="brand" href="#beranda" aria-label="Arapi Farm, beranda">
+                <span class="brand-mark" aria-hidden="true">✦</span>
+                <span>Arapi</span><small>FARM & FRESH EGGS</small>
+            </a>
+            <button class="menu-toggle" type="button" aria-label="Buka menu" aria-expanded="false">☰</button>
+            <nav class="nav-links" aria-label="Navigasi utama">
+                <a href="#tentang">Tentang Kami</a>
+                <a href="#keunggulan">Keunggulan</a>
+                <a href="#produk">Produk</a>
+                <a class="button" href="#kontak">Hubungi Kami <span class="arrow">↗</span></a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero" id="beranda">
+            <div class="container">
+                <div class="hero-content">
+                    <span class="eyebrow">Dari kandang terbaik untuk keluarga</span>
+                    <h1>Kesegaran yang<br>dimulai dari <span>rumah.</span></h1>
+                    <p class="hero-copy">Telur segar pilihan dari peternakan yang dikelola dengan penuh perhatian. Lebih
+                        dekat ke peternak, lebih baik untuk keluarga.</p>
+                    <div class="hero-actions">
+                        <a class="button" href="#produk">Jelajahi Produk <span class="arrow">→</span></a>
+                        <a class="button button-light" href="#tentang">Kenali Peternakan</a>
+                    </div>
+                    <div class="hero-note"><span class="note-dot">✓</span> Dipanen segar, dikirim dengan sepenuh hati
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="numbers" aria-label="Arapi Farm dalam angka">
+            <div class="container numbers-card">
+                <div class="number"><strong>10+</strong><span>Tahun pengalaman</span></div>
+                <div class="number"><strong>5.000+</strong><span>Ayam terawat</span></div>
+                <div class="number"><strong>1.200+</strong><span>Telur segar per hari</span></div>
+                <div class="number"><strong>100%</strong><span>Sepenuh hati</span></div>
+            </div>
+        </section>
+
+        <section class="about" id="tentang">
+            <div class="container about-grid">
+                <div class="about-visual" role="img" aria-label="Lanskap hijau di sekitar peternakan">
+                    <div class="about-photo"></div>
+                    <div class="quality-card"><strong>Sejak<br>2014</strong><span>Tumbuh bersama peternak lokal</span>
+                    </div>
+                </div>
+                <div class="about-text">
+                    <span class="eyebrow">Cerita kami</span>
+                    <h2>Merawat ayam, menjaga kualitas.</h2>
+                    <p>Arapi Farm berawal dari sebuah keluarga peternak yang percaya bahwa telur berkualitas dimulai
+                        dari ayam yang dirawat dengan baik. Hari ini, kami tetap memegang prinsip yang sama di setiap
+                        proses.</p>
+                    <p>Kami menjaga kebersihan kandang, memperhatikan pakan, dan menangani hasil panen dengan cermat
+                        agar telur sampai di meja Anda dalam kondisi terbaik.</p>
+                    <ul class="check-list">
+                        <li><span class="check">✓</span> Perawatan ayam yang konsisten</li>
+                        <li><span class="check">✓</span> Proses panen dan sortir yang teliti</li>
+                        <li><span class="check">✓</span> Mendukung usaha peternak lokal</li>
+                    </ul>
+                    <a class="product-link" href="#kontak">Kenali kami lebih dekat <span class="arrow">→</span></a>
+                </div>
+            </div>
+        </section>
+
+        <section class="values" id="keunggulan">
+            <div class="container">
+                <div class="section-heading">
+                    <span class="eyebrow">Mengapa Arapi Farm</span>
+                    <h2>Hal baik di setiap butirnya.</h2>
+                    <p>Kami percaya kualitas bukan sekadar janji. Ia dibangun dari perhatian kecil yang dilakukan setiap
+                        hari.</p>
+                </div>
+                <div class="value-grid">
+                    <article class="value-card">
+                        <div class="value-icon" aria-hidden="true">☀</div>
+                        <h3>Segar setiap hari</h3>
+                        <p>Telur dipanen secara rutin dan disortir dengan teliti sebelum dikirim kepada Anda.</p>
+                    </article>
+                    <article class="value-card">
+                        <div class="value-icon" aria-hidden="true">♡</div>
+                        <h3>Perawatan penuh perhatian</h3>
+                        <p>Kami menjaga lingkungan kandang dan kebutuhan ayam sebagai bagian penting dari kualitas.</p>
+                    </article>
+                    <article class="value-card">
+                        <div class="value-icon" aria-hidden="true">♧</div>
+                        <h3>Dari peternak lokal</h3>
+                        <p>Mendukung rantai pasok yang dekat agar hubungan peternak dan pelanggan makin kuat.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="products" id="produk">
+            <div class="container">
+                <div class="products-head">
+                    <div>
+                        <span class="eyebrow">Pilihan produk</span>
+                        <h2>Teman baik di setiap hidangan.</h2>
+                    </div>
+                    <p>Dari sarapan sederhana hingga kebutuhan usaha, temukan pilihan telur yang sesuai untuk Anda.</p>
+                </div>
+                <div class="product-grid">
+                    <article class="product-card">
+                        <div class="product-image one" role="img" aria-label="Telur ayam segar"></div>
+                        <div class="product-info">
+                            <span class="product-tag">Favorit keluarga</span>
+                            <h3>Telur Ayam Segar</h3>
+                            <p>Telur pilihan untuk menu sehari-hari di rumah.</p>
+                            <a class="product-link" href="#kontak">Tanya ketersediaan <span class="arrow">→</span></a>
+                        </div>
+                    </article>
+                    <article class="product-card">
+                        <div class="product-image two" role="img" aria-label="Telur pilihan ukuran seragam"></div>
+                        <div class="product-info">
+                            <span class="product-tag">Pilihan usaha</span>
+                            <h3>Telur Sortir</h3>
+                            <p>Telur yang telah disortir untuk kebutuhan toko dan kuliner.</p>
+                            <a class="product-link" href="#kontak">Tanya ketersediaan <span class="arrow">→</span></a>
+                        </div>
+                    </article>
+                    <article class="product-card">
+                        <div class="product-image three" role="img" aria-label="Paket telur untuk pembelian grosir">
+                        </div>
+                        <div class="product-info">
+                            <span class="product-tag">Pesanan khusus</span>
+                            <h3>Paket Grosir</h3>
+                            <p>Pasokan berkala dengan jumlah yang disesuaikan kebutuhan.</p>
+                            <a class="product-link" href="#kontak">Diskusikan pesanan <span class="arrow">→</span></a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta" id="kontak">
+            <div class="container cta-inner">
+                <div>
+                    <span class="eyebrow">Mari terhubung</span>
+                    <h2>Butuh telur segar untuk rumah atau usaha?</h2>
+                </div>
+                <a class="button" href="https://wa.me/6281234567890" target="_blank" rel="noopener noreferrer">Pesan via
+                    WhatsApp <span class="arrow">↗</span></a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <a class="brand" href="#beranda"><span class="brand-mark"
+                            aria-hidden="true">✦</span><span>Sejahtera<small>FARM & FRESH EGGS</small></span></a>
+                    <p>Peternakan ayam petelur keluarga yang menghadirkan telur segar dengan penuh perhatian.</p>
+                </div>
+                <div>
+                    <h3>Jelajahi</h3>
+                    <div class="footer-links">
+                        <a href="#tentang">Tentang kami</a>
+                        <a href="#keunggulan">Keunggulan</a>
+                        <a href="#produk">Produk</a>
+                    </div>
+                </div>
+                <div>
+                    <h3>Hubungi</h3>
+                    <div class="footer-links">
+                        <a href="https://wa.me/6281234567890" target="_blank" rel="noopener noreferrer">WhatsApp:
+                            0812-3456-7890</a>
+                        <span>Senin–Sabtu, 08.00–17.00</span>
+                        <span>Indonesia</span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© <span id="year"></span> Sejahtera Farm. Semua hak dilindungi.</span>
+                <span>Segar dari peternakan, hangat untuk keluarga.</span>
+            </div>
+        </div>
+    </footer>
+    <script>
+        const menuToggle = document.querySelector(".menu-toggle");
+        const navLinks = document.querySelector(".nav-links");
+
+        menuToggle.addEventListener("click", () => {
+            const isOpen = navLinks.classList.toggle("open");
+            menuToggle.setAttribute("aria-expanded", String(isOpen));
+            menuToggle.setAttribute("aria-label", isOpen ? "Tutup menu" : "Buka menu");
+        });
+
+        navLinks.addEventListener("click", (event) => {
+            if (event.target.closest("a")) {
+                navLinks.classList.remove("open");
+                menuToggle.setAttribute("aria-expanded", "false");
+                menuToggle.setAttribute("aria-label", "Buka menu");
+            }
+        });
+
+        document.querySelector("#year").textContent = new Date().getFullYear();
+    </script>
+</body>
+
+</html>
